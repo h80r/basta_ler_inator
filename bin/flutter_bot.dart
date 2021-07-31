@@ -1,6 +1,8 @@
 import 'package:nyxx/nyxx.dart';
 import 'package:dotenv/dotenv.dart' as dotenv;
 
+import 'flutter_search.dart';
+
 void main(List<String> arguments) {
   dotenv.load();
 
@@ -16,7 +18,18 @@ void main(List<String> arguments) {
   bot.onMessageReceived.listen((event) {
     if (event.message.author.id == bot.self.id) return;
     if (event.message.content.startsWith('basta ler')) {
-      event.message.channel.sendMessage(MessageBuilder.content('basta ler'));
+      search(event.message.content).then(
+        (value) => value?.forEach(
+          (element) => event.message.channel.sendMessage(
+            MessageBuilder.embed(
+              EmbedBuilder()
+                ..title = element.title
+                ..description = element.description
+                ..url = element.url,
+            ),
+          ),
+        ),
+      );
     }
   });
 }
