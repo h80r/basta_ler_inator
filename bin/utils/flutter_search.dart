@@ -1,5 +1,5 @@
 import 'package:web_scraper/web_scraper.dart';
-import 'models/result.dart';
+import '../models/result.dart';
 
 String queryParser(String query) {
   var parsedQuery = query.replaceFirst('basta ler ', '').replaceAll(' ', '+');
