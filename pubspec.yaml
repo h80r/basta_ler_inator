@@ -12,3 +12,4 @@ dev_dependencies:
 dependencies: 
   dotenv: ^3.0.0
   nyxx: ^2.0.0-rc.12
+  web_scraper: ^0.1.4
